@@ -42,7 +42,7 @@ public class BoardDAO {
 
         // 샐행
         boolean isInsert = false;
-        if (jdbcTemplate.update(selectBoardSQL, params) > 0)
+        if (jdbcTemplate.update(insertBoardSQL, params) > 0)
             isInsert = true;
 
         return isInsert;
