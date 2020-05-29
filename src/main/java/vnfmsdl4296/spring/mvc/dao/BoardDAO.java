@@ -89,6 +89,7 @@ public class BoardDAO {
     // selectBoard의 RowMapper 내부 클래스
     private class BoardRowMapper implements RowMapper<BoardVO> {
 
+
         @Override
         public BoardVO mapRow(ResultSet rs, int num) throws SQLException {
 
