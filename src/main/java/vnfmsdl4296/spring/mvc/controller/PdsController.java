@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import vnfmsdl4296.spring.mvc.service.BoardService;
 import vnfmsdl4296.spring.mvc.service.FileUpDownUtil;
@@ -12,6 +13,7 @@ import vnfmsdl4296.spring.mvc.vo.BoardVO;
 import vnfmsdl4296.spring.mvc.vo.PdsVO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -61,22 +63,9 @@ public class PdsController {
         FileUpDownUtil util = new FileUpDownUtil();
         Map<String, String> frmdata = util.procUpload(req);
 
-        // multipart 폼 데이터 처리
-        for (String key:frmdata.keySet()){
-            String val = frmdata.get(key);
-            switch (key) {
-                case "title" : pd.setTitle(val); break;
-                case "userid" : pd.setUserid(val); break;
-                case "contents" : pd.setContents(val); break;
-
-                case "file1" : pd.setFname(val); break;
-                case "file1size" : pd.setFsize(val); break;
-                case "file1type" : pd.setFtype(val); break;
-            }
-        }
 
         // 서비스 객체로 넘김
-        psrv.newPds(pd);
+        psrv.newPds(pd, frmdata);
 
         return "redirect:/pds/list";
     }
@@ -95,5 +84,42 @@ public class PdsController {
 
         return mv;
     }
+
+    // 수정하기
+    @RequestMapping(value = "/pds/update")
+    public ModelAndView update() {
+
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("layout/layout"); // 뷰이름 지정
+
+        mv.addObject("action", "../pds/modify.jsp");
+
+        return mv;
+    }
+
+    // 삭제하기
+    @RequestMapping(value = "/pds/delete")
+    public String delete() {
+
+        return "redirect:/pds/list";
+    }
+
+
+    // 첨부파일 다운로드하기
+    // 컨트롤러 메서드에 ResponseBody 애노테이션을 사용하면
+    // view를 이용한 출력하지 않고
+    // HTTP 응답으로 직접 데이터를 전송하겠다는 의미
+    @ResponseBody
+    @RequestMapping(value = "/pds/pdown")
+    public void pdown(HttpServletRequest req,
+                        HttpServletResponse res) {
+        FileUpDownUtil util = new FileUpDownUtil();
+        try {
+            util.procDownload(req, res);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
 }
