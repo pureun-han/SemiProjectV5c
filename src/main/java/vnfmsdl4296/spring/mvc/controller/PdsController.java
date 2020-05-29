@@ -70,6 +70,8 @@ public class PdsController {
                 case "contents" : pd.setContents(val); break;
 
                 case "file1" : pd.setFname(val); break;
+                case "file1size" : pd.setFsize(val); break;
+                case "file1type" : pd.setFtype(val); break;
             }
         }
 

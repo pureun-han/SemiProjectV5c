@@ -24,9 +24,9 @@ public class PdsService {
 
         // 첨부파일 정보를 임의로 저장
         // pd.setFname("abc123xyz.zip");
-        pd.setFsize("123");
-        pd.setFdown("2345");
-        pd.setFtype("zip");
+        //pd.setFsize("123");
+        pd.setFdown("0");
+        //pd.setFtype("zip");
 
         if (pdao.insertPds(pd))
             result = "데이터 입력 성공!!";
