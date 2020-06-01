@@ -51,9 +51,9 @@
 
                     <div class="custom-file col-7">
                         <input type="file" id="file1" name="file1"
-                                class="custom-file-input">
+                               class="custom-file-input">
                         <label class="custom-file-label">
-                                첨부할 파일을 선택하세요</label>
+                            첨부할 파일을 선택하세요</label>
                     </div>
                     <div class="custom-file col-7 offset-2">
                         <input type="file" id="file2" name="file2"

@@ -29,12 +29,17 @@ public class BoardService {
         return result;
     }
 
-    public ArrayList<BoardVO> showBoard() {
-        return (ArrayList<BoardVO>)bdao.selectBoard();
+    public ArrayList<BoardVO> showBoard(String cp) {
+        int snum = (Integer.parseInt(cp) -1) * 10;
+
+        return (ArrayList<BoardVO>)bdao.selectBoard(snum);
     }
 
     public BoardVO showOneBoard(String bno) {
         return bdao.selectOneBoard(bno);
     }
 
+    public int countBoard() {
+        return bdao.selectCountBoard();
+    }
 }
