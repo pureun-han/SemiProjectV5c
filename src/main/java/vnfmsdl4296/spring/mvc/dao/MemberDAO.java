@@ -3,11 +3,14 @@ package vnfmsdl4296.spring.mvc.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import vnfmsdl4296.spring.mvc.vo.MemberVO;
+import vnfmsdl4296.spring.mvc.vo.ZipcodeVO;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository("mdao")
 public class MemberDAO {
@@ -20,6 +23,7 @@ public class MemberDAO {
     @Value("#{jdbc['insertJoinSQL']}") private String insertJoinSQL;
     @Value("#{jdbc['selectJoinSQL']}") private String selectJoinSQL;
     @Value("#{jdbc['selectOneJoinSQL']}") private String selectOneJoinSQL;
+    @Value("#{jdbc['ZipcodeSQL']}") private String ZipcodeSQL;
 
 
     @Autowired
@@ -66,6 +70,30 @@ public class MemberDAO {
     // MemberVO 객체에 저장하고 반환함
     public MemberVO selectOneMember(String bno) {
        return null;
+    }
+
+    // 우편번호 검색
+    public List<ZipcodeVO> selectZipcode(String dong) {
+        Object[] params = new Object[] { dong + "%" };
+
+        RowMapper<ZipcodeVO> mapper = new ZipcodeRowMapper();
+
+        return jdbcTemplate.query(ZipcodeSQL, params, mapper);
+    }
+
+    private class ZipcodeRowMapper implements RowMapper<ZipcodeVO> {
+
+        @Override
+        public ZipcodeVO mapRow(ResultSet rs, int num) throws SQLException {
+            ZipcodeVO zvo = new ZipcodeVO(
+                    rs.getString("zipcode"),
+                    rs.getString("sido"),
+                    rs.getString("gugun"),
+                    rs.getString("dong"),
+                    rs.getString("ri"),
+                    rs.getString("bunji"));
+            return zvo;
+        }
     }
 
 }

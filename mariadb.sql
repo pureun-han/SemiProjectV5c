@@ -57,3 +57,16 @@ create table gallery (
 );
 
 
+-- zipcode : 2013.02 지번주소(총 52144건)
+create table zipcode (
+  zipcode varchar(7),
+  sido varchar(10),
+  gugun varchar(25),
+  dong varchar(35),
+  ri varchar(50),
+  bunji varchar(25),
+  seq varchar(5)
+);
+
+select * from zipcode
+where dong like '자양동';
