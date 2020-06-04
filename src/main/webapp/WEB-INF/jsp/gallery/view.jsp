@@ -10,20 +10,20 @@
 
         <div class="row margin1050">
             <div class="col-6">
-                <button type="button" id="prevbd"
+                <button type="button" id="prevgal"
                         class="btn btn-light"
                         style="margin-left: -14px">
                     <i class="fa fa-chevron-left"> </i>
                     이전게시물
                 </button>
-                <button type="button" id="nextbd"
+                <button type="button" id="nextgal"
                         class="btn btn-light">
                     <i class="fa fa-chevron-right"> </i>
                     다음게시물
                 </button>
             </div>
             <div class="col-6 text-right">
-                <button type="button" id="newbd"
+                <button type="button" id="newgal"
                         class="btn btn-light"
                         style="margin-right: -14px">
                     <i class="fa fa-plus-circle"> </i>
@@ -56,20 +56,20 @@
 
         <div class="row margin1050">
             <div class="col-6">
-                <button type="button" id="updbd"
+                <button type="button" id="updgal"
                         class="btn btn-warning"
                         style="margin-left: -14px">
                     <i class="fa fa-pencil"> </i>
                     수정하기
                 </button>
-                <button type="button" id="delbd"
+                <button type="button" id="delgal"
                         class="btn btn-danger">
                     <i class="fa fa-trash-o"> </i>
                     삭제하기
                 </button>
             </div>
             <div class="col-6 text-right">
-                <button type="button" id="lstbd"
+                <button type="button" id="lstgal"
                         class="btn btn-light"
                         style="margin-right: -14px">
                     <i class="fa fa-list"> </i>
@@ -148,7 +148,7 @@
                     <textarea id="comment" rows="10"
                         class="form-control col-7"></textarea>
 
-                    <button type="button" id="bdcmt"
+                    <button type="button" id="galcmt"
                         class="btn btn-dark" style="margin:auto">
                         <i class="fa fa-commenting"></i>
                         댓글쓰기</button>
