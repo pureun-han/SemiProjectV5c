@@ -9,9 +9,12 @@ $('#loginbtn').on('click', function () {
         alert('아이디를 입력하세요!');
     else if ($('#passwd').val() == '')
         alert('비밀번호를 입력하세요!');
-    else {
-
+    else
         $('#loginfrm').attr('action', '/login/login');
-        $('#loginfrm').submit();
-    }
+    $('#loginfrm').submit();
+});
+
+// 로그아웃하기
+$("#logoutbtn").on('click', function () {
+    location.href = "login/logout";
 });

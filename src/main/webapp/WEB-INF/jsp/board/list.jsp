@@ -72,12 +72,15 @@ integerOnly="true"/>
         </div> <!-- 타이틀 -->
 
         <div class="row margin1050">
+            <c:if test="${not empty UID}">
             <div class="col-12 text-right">
-                <button type="button" id="newbd"
-                        class="btn btn-light">
-                    <i class="fa fa-plus-circle"> </i>
-                    새글쓰기
-                </button>
+                    <button type="button" id="newbd"
+                            class="btn btn-light">
+                        <i class="fa fa-plus-circle"> </i>
+                        새글쓰기
+                    </button>
+            </c:if>
+
             </div>
         </div><!-- 버튼들 -->
 
