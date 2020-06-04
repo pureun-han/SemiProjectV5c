@@ -32,7 +32,9 @@ public class GalleryController {
 
         mv.setViewName("layout/layout"); // 뷰이름 지정
         mv.addObject("action", "../gallery/list.jsp");
+        // 뷰로 넘길 데이터를 modelandview 객체에 담음
 
+        mv.addObject("glist", gsrv.showGallery());
 
         return mv;
     }
@@ -65,35 +67,18 @@ public class GalleryController {
 
     // 본문보기
     @RequestMapping(value = "/gallery/view")
-    public ModelAndView view() {
+    public ModelAndView view(String gno) {
 
         ModelAndView mv = new ModelAndView();
 
         mv.setViewName("layout/layout"); // 뷰이름 지정
-        mv.addObject("action", "../gallery/view.jsp");
 
+        mv.addObject("action", "../gallery/view.jsp");
+        // 뷰로 넘길 데이터를 modelandview 객체에 담음
+
+        mv.addObject("g", gsrv.showOneGallery(gno));
 
         return mv;
     }
-
-//    // 수정하기
-//    @RequestMapping(value = "/gallery/update")
-//    public ModelAndView update() {
-//
-//        ModelAndView mv = new ModelAndView();
-//        mv.setViewName("layout/layout"); // 뷰이름 지정
-//
-//        mv.addObject("action", "../gallery/modify.jsp");
-//
-//        return mv;
-//    }
-//
-//    // 삭제하기
-//    @RequestMapping(value = "/gallery/delete")
-//    public String delete(String bno) {
-//
-//
-//        return "redirect:/board/list?cp=1";
-//    }
 
 }

@@ -8,6 +8,7 @@ import vnfmsdl4296.spring.mvc.dao.GalleryDAO;
 import vnfmsdl4296.spring.mvc.vo.BoardVO;
 import vnfmsdl4296.spring.mvc.vo.GalleryVO;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,23 +54,15 @@ public class GalleryService {
 
 
     }
-//
-//    public ArrayList<BoardVO> showBoard(String cp) {
-//        int snum = (Integer.parseInt(cp) -1) * 10;
-//
-//        return (ArrayList<BoardVO>)gdao.selectGallery(snum);
-//    }
-//
-//    public BoardVO showOneBoard(String bno) {
-//        return bdao.selectOneBoard(bno);
-//    }
-//
-//    public int countBoard() {
-//        return bdao.selectCountBoard();
-//    }
-//
-//    // 특정 게시글 삭제하기
-//    public void removeBoard(String bno) {
-//        bdao.deleteBoard(bno);
-//    }
+
+    // 갤러리 목록 표시
+    public ArrayList<GalleryVO> showGallery() {
+        return (ArrayList<GalleryVO>)gdao.selectGallery();
+
+    }
+
+    // 갤러리 본문 출력
+    public GalleryVO showOneGallery(String gno) {
+        return gdao.selectOneGallery(gno);
+    }
 }
