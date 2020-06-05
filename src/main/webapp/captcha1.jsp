@@ -42,4 +42,13 @@
     사용자가 captcha를 클릭해야만
     정상적인 작업을 허용하는 형태
 
+    recaptcha 서비스 등록시 2가지 키를 제공해 주는데
+    sitekey는 클라이언트 측 입력폼에 사용하는 키이고
+    sceretkey는 서버측에서 전송된 captcha token을 확인하는
+    용도로 사용하는 키임
+
+    recaptcha v2는 2가지 서비스(checkbox, invisible)를 제공하는데
+    각 기능별로 제공하는 키가 다르므로 주의해서 사용할 것!
+
+
 -->
