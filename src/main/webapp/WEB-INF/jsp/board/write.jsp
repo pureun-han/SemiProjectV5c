@@ -1,6 +1,8 @@
 <%@ page  pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+
 <c:if test="${empty UID}">
     <script>location.href='/login/fail';</script>
 </c:if>
@@ -56,9 +58,11 @@
                 <div class="form-group row">
                     <label class="col-form-label col-2 text-right">
                         자동가입방지</label>
-                    <img src="../img/google_recaptcha.gif"
-                         width="50%" height="50%"
-                         style="margin-left: -5px">
+                    <div class="g-recaptcha"
+                         data-sitekey="6LfalQAVAAAAAO-aXVcbfPUmNhxADiLN-IQc9AjS"></div>
+                    <input type="hidden"
+                           name="g-recaptcha" id="g-recaptcha">
+                    <span style="color: red">${checkFail}</span>
                 </div><!-- 자동가입방지 -->
 
                 <div class="row justify-content-center"

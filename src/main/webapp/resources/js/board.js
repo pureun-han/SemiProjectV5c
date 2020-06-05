@@ -10,8 +10,10 @@ $('#bdregbtn').on('click', function () {
     } else if ($('#contents').val() == '') {
         alert('본문을 입력하세요!!');
         $('#contents').focus();
-
+    } else if (grecaptcha.getResponse()==""){
+        alert("자동가입방지 확인 필요!!")
     } else {
+        $('#g-recaptcha').val(grecaptcha.getResponse());
         $('#bdfrm').submit();
     }
 }); // 새글등록
